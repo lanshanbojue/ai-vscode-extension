@@ -1,0 +1,161 @@
+{
+  "name": "ai-coding-assistant",
+  "displayName": "AI编码助手",
+  "description": "基于渠道化设计的AI编程助手",
+  "version": "0.1.0",
+  "publisher": "ai-coding-team",
+  "engines": {
+    "vscode": "^1.80.0",
+    "node": ">=18.0.0"
+  },
+  "categories": ["Other", "Machine Learning"],
+  "keywords": ["ai", "coding", "assistant", "chat", "tongyi", "automation"],
+  "activationEvents": [
+    "onCommand:aiCoding.openChat",
+    "onCommand:aiCoding.explainCode",
+    "onView:aiCoding.chatView"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "aiCoding.openChat",
+        "title": "打开AI聊天",
+        "category": "AI编码助手",
+        "icon": "$(comment-discussion)"
+      },
+      {
+        "command": "aiCoding.explainCode",
+        "title": "解释代码",
+        "category": "AI编码助手",
+        "icon": "$(question)"
+      },
+      {
+        "command": "aiCoding.optimizeCode",
+        "title": "优化代码",
+        "category": "AI编码助手",
+        "icon": "$(rocket)"
+      },
+      {
+        "command": "aiCoding.debugCode",
+        "title": "调试代码",
+        "category": "AI编码助手",
+        "icon": "$(bug)"
+      }
+    ],
+    "views": {
+      "explorer": [
+        {
+          "id": "aiCoding.chatView",
+          "name": "AI助手",
+          "type": "webview",
+          "when": "true"
+        }
+      ]
+    },
+    "menus": {
+      "editor/context": [
+        {
+          "command": "aiCoding.explainCode",
+          "when": "editorHasSelection",
+          "group": "aiCoding"
+        },
+        {
+          "command": "aiCoding.optimizeCode",
+          "when": "editorHasSelection",
+          "group": "aiCoding"
+        },
+        {
+          "command": "aiCoding.debugCode",
+          "when": "editorHasSelection",
+          "group": "aiCoding"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "aiCoding.openChat"
+        },
+        {
+          "command": "aiCoding.explainCode",
+          "when": "editorHasSelection"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "AI编码助手",
+      "properties": {
+        "aiCoding.defaultChannel": {
+          "type": "string",
+          "default": "tongyi",
+          "description": "默认AI服务渠道",
+          "enum": ["tongyi"]
+        },
+        "aiCoding.autoSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "自动保存聊天记录"
+        },
+        "aiCoding.maxHistory": {
+          "type": "number",
+          "default": 100,
+          "description": "最大历史记录数"
+        },
+        "aiCoding.streamResponse": {
+          "type": "boolean",
+          "default": true,
+          "description": "启用流式响应"
+        },
+        "aiCoding.debug": {
+          "type": "boolean",
+          "default": false,
+          "description": "启用调试模式"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "webpack --mode development",
+    "build": "webpack --mode production",
+    "watch": "webpack --mode development --watch",
+    "dev": "concurrently \"npm run watch\" \"npm run serve\"",
+    "serve": "nodemon --ext ts --exec \"npm run compile\"",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint src --ext .ts,.tsx",
+    "lint:fix": "eslint src --ext .ts,.tsx --fix",
+    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx}\"",
+    "package": "vsce package",
+    "publish": "vsce publish",
+    "build:clean": "rimraf out dist web *.vsix"
+  },
+  "dependencies": {
+    "puppeteer": "^21.5.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "@types/node": "^18.17.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@types/jest": "^29.5.0",
+    "@types/puppeteer": "^7.0.4",
+    "@typescript-eslint/eslint-plugin": "^6.4.0",
+    "@typescript-eslint/parser": "^6.4.0",
+    "@vscode/test-electron": "^2.3.4",
+    "@vscode/vsce": "^2.19.0",
+    "concurrently": "^8.2.0",
+    "css-loader": "^6.8.1",
+    "eslint": "^8.47.0",
+    "jest": "^29.6.0",
+    "nodemon": "^3.0.1",
+    "prettier": "^3.0.0",
+    "rimraf": "^5.0.0",
+    "style-loader": "^3.3.3",
+    "ts-jest": "^29.1.0",
+    "ts-loader": "^9.4.4",
+    "typescript": "^5.1.0",
+    "webpack": "^5.88.0",
+    "webpack-cli": "^5.1.0"
+  }
+}
