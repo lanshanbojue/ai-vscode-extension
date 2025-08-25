@@ -1,0 +1,171 @@
+/* AI编码助手 UI 样式 */
+
+:root {
+  --primary-color: #007acc;
+  --secondary-color: #f3f3f3;
+  --accent-color: #0078d4;
+  --text-color: #333;
+  --bg-color: #fff;
+  --border-color: #e1e1e1;
+  --error-color: #e74c3c;
+  --success-color: #27ae60;
+  --warning-color: #f39c12;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.app-header {
+  flex-shrink: 0;
+  padding: 8px;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--secondary-color);
+}
+
+.app-main {
+  flex: 1;
+  overflow: hidden;
+}
+
+.app-footer {
+  flex-shrink: 0;
+  padding: 4px 8px;
+  border-top: 1px solid var(--border-color);
+  background-color: var(--secondary-color);
+  font-size: 12px;
+  color: #666;
+}
+
+.app-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: var(--bg-color);
+}
+
+.app-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: var(--bg-color);
+}
+
+.error-content {
+  text-align: center;
+  padding: 20px;
+}
+
+.error-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.error-content h3 {
+  margin-bottom: 8px;
+  color: var(--error-color);
+}
+
+.error-content p {
+  margin-bottom: 16px;
+  color: #666;
+}
+
+.retry-button {
+  padding: 8px 16px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.retry-button:hover {
+  background-color: var(--accent-color);
+}
+
+/* 渠道选择器 */
+.channel-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.channel-selector select {
+  padding: 4px 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: white;
+  font-size: 14px;
+}
+
+/* 聊天界面 */
+.chat-interface {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.message-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px;
+}
+
+.message-input {
+  flex-shrink: 0;
+  padding: 8px;
+  border-top: 1px solid var(--border-color);
+}
+
+/* 加载动画 */
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+  border-top-color: var(--primary-color);
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 480px) {
+  .app-header {
+    padding: 4px;
+  }
+  
+  .message-list {
+    padding: 4px;
+  }
+  
+  .message-input {
+    padding: 4px;
+  }
+}
