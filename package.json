@@ -1,3 +1,7 @@
+/**
+ * 更新package.json配置支持豆包渠道
+ */
+
 {
   "name": "ai-coding-assistant",
   "displayName": "AI编码助手",
@@ -9,7 +13,7 @@
     "node": ">=18.0.0"
   },
   "categories": ["Other", "Machine Learning"],
-  "keywords": ["ai", "coding", "assistant", "chat", "tongyi", "automation"],
+  "keywords": ["ai", "coding", "assistant", "chat", "tongyi", "doubao", "automation"],
   "activationEvents": [
     "onCommand:aiCoding.openChat",
     "onCommand:aiCoding.explainCode",
@@ -88,7 +92,8 @@
           "type": "string",
           "default": "tongyi",
           "description": "默认AI服务渠道",
-          "enum": ["tongyi"]
+          "enum": ["tongyi", "doubao"],
+          "enumDescriptions": ["通义千问", "豆包"]
         },
         "aiCoding.autoSave": {
           "type": "boolean",
