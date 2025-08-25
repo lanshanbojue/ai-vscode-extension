@@ -1,5 +1,5 @@
 /**
- * 类型定义统一导出
+ * 类型定义统一导出 - 新增豆包渠道支持
  */
 
 // 渠道相关类型
@@ -31,7 +31,8 @@ export type LogLevel = 'debug' | 'info' | 'warn' | 'error';
 
 export type ThemeType = 'auto' | 'light' | 'dark';
 
-export type ChannelId = 'tongyi' | string;
+// 更新渠道ID类型，新增豆包支持
+export type ChannelId = 'tongyi' | 'doubao' | string;
 
 // 工具类型
 export type Partial<T> = {
@@ -73,4 +74,15 @@ export interface Deferred<T = any> {
   promise: Promise<T>;
   resolve: PromiseResolve<T>;
   reject: PromiseReject;
+}
+
+// 渠道信息类型
+export interface ChannelInfo {
+  id: ChannelId;
+  name: string;
+  description: string;
+  website: string;
+  enabled: boolean;
+  authenticated: boolean;
+  connected: boolean;
 }
